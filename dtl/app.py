@@ -14,7 +14,6 @@ from dtl.util import get_path
 from threading import Thread, Event
 import datetime
 import json
-import os
 import re
 
 

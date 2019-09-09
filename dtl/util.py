@@ -16,7 +16,12 @@ def get_path(name='log', abspath=None, relative_path=None,
         directory = os.path.abspath(os.path.join(
             os.path.abspath(relative_path), name))
     else:
-        if _file:
+        import sys
+        if getattr(sys, 'frozen', False):
+            application_path = os.path.dirname(sys.executable)
+            directory = os.path.abspath(
+                os.path.join(application_path, name))
+        elif _file:
             if parent:
                 directory = os.path.abspath(
                     os.path.join(os.path.dirname(_file), os.pardir, name))
